@@ -1,0 +1,24 @@
+{
+  "name": "pwpc-whiteboard",
+  "version": "0.0.0",
+  "description": "Programa ejemplo de PWPC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rivalcoba/borrar-pwpci-2021b.git"
+  },
+  "keywords": [
+    "fullstack",
+    "es6",
+    "javascript"
+  ],
+  "author": "@rivalcoba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rivalcoba/borrar-pwpci-2021b/issues"
+  },
+  "homepage": "https://github.com/rivalcoba/borrar-pwpci-2021b#readme"
+}
