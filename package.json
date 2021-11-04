@@ -4,6 +4,8 @@
   "description": "Programa ejemplo de PWPC",
   "main": "index.js",
   "scripts": {
+    "start": "echo \"Iniciando Programa... 💽\" && node index",
+    "dev": "set enviroment=DEVELOPMENT && node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/rivalcoba/borrar-pwpci-2021b/issues"
   },
-  "homepage": "https://github.com/rivalcoba/borrar-pwpci-2021b#readme"
+  "homepage": "https://github.com/rivalcoba/borrar-pwpci-2021b#readme",
+  "type":"module"
 }
