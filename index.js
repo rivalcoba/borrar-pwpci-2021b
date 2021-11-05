@@ -31,6 +31,23 @@ const server = http.createServer((req, res) => {
     // Cerrando conexion
     res.end();
 
+  }else if(url === '/author'){
+    // Respuesta ante "Get /"
+    // 1. Estableciendo el tipo de retorno
+    // como HTML
+    res.setHeader('Content-Type', 'text/html');
+    let url_image = 'https://yt3.ggpht.com/ytc/AKedOLR8TH6qHa2gwbGT6muhZKx_IotBWygSNcG3LGzFosM=s900-c-k-c0x00ffffff-no-rj';
+    // 2. Escribiendo la respuesta
+    res.write('<html>');
+    res.write('<head><title>My App</title></head>');
+    res.write('<body>');
+    res.write('<h1>&#9889; Author &#9889;</h1>');
+    res.write('<p>Ivan Rivalcoba Rivas - Web Developer</p>');
+    res.write(`<img width="300px" src="${url_image}" alt="Foto Ivan Rivalcoba">`);
+    res.write('</body>');
+    res.write('</html>');
+    // Cerrando conexion
+    res.end();
   }else{
     // Se registra el Recurso no encontrado
     console.log(`❌ No se ha econtrado el recurso: ${url}`);
