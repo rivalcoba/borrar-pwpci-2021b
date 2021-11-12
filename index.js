@@ -1,5 +1,6 @@
 // 1. Importar el modulo http
 import http from "http";
+import fs from "fs";
 
 /**
  * Codigos de Emojies
@@ -56,21 +57,12 @@ const server = http.createServer((req, res) => {
     req.on("end", () => {
       const parsedBody = Buffer.concat(body).toString();
       const message = parsedBody.split("=")[1];
-      // 1. Estableciendo el tipo de retorno
-      // como HTML
-      res.setHeader("Content-Type", "text/html");
-      res.write(`
-      <html>
-      <head>
-        <title>Received Message</title>
-      </head>
-      <body>
-        <h1>Received Message</h1>
-        <p>Thank you!!!</p>
-        <p>The message we recieved was this: ${message}</p>
-      </body>
-    </html>
-      `);
+      // Guardando el mensaje en un archivo
+      fs.writeFileSync('message.txt', message);
+      // Establecer el status code de redireccionamiento
+      res.statusCode = 302;
+      // Establecer la ruta de direcciones
+      res.setHeader('Location','/');
       // Finalizo conección
       return res.end();
     });
