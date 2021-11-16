@@ -53,18 +53,37 @@ const server = http.createServer((req, res) => {
       // 2.3 Proteccion en caso de recepción masiva de datos
       if (body.length > 1e6) req.socket.destroy();
     });
+
+    // EjecutaOperacion(ARGS1,ARG2,ARG3, cb)
+    // Modelo Asincrono
+    // Suma2Numeros(1,2,cb)
+    /*
+    1. let res = Suma2Numeros(1,2);
+    2. console.log(res) // undefined
+    */
+
     // 3. Registrando un manejador de fin de recepción de datos
     req.on("end", () => {
       const parsedBody = Buffer.concat(body).toString();
       const message = parsedBody.split("=")[1];
       // Guardando el mensaje en un archivo
-      fs.writeFileSync('message.txt', message);
-      // Establecer el status code de redireccionamiento
-      res.statusCode = 302;
-      // Establecer la ruta de direcciones
-      res.setHeader('Location','/');
-      // Finalizo conección
-      return res.end();
+      fs.writeFile('message.txt', message, (err)=>{
+        // Verificar si hubo error
+        if(err){
+          console.log("> No se pudo grabar el archivo");
+          res.statusCode = 500; // Internal Server Error
+          res.setHeader("Content-Type", "text/html");
+          res.write("ERROR WHEN LOADING FILE");
+          return res.end();
+        }
+        // en caso de no haber error
+        // Establecer el status code de redireccionamiento
+        res.statusCode = 302;
+        // Establecer la ruta de direcciones
+        res.setHeader('Location','/');
+        // Finalizo conección
+        return res.end();
+      });
     });
   } else if (url === "/author") {
     // Respuesta ante "Get /"
