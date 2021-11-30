@@ -4,8 +4,8 @@
   "description": "Programa ejemplo de PWPC",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Iniciando Programa... 💽\" && node index",
-    "dev": "set NODE_ENV=development && nodemon index",
+    "start": "cross-env echo \"Iniciando Programa... 💽\" && NODE_ENV=production node index",
+    "dev": "cross-env NODE_ENV=development nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/rivalcoba/borrar-pwpci-2021b#readme",
   "type": "module",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
