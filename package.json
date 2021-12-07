@@ -2,7 +2,7 @@
   "name": "pwpc-whiteboard",
   "version": "0.0.0",
   "description": "Programa ejemplo de PWPC",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "cross-env echo \"Iniciando Programa... 💽\" && NODE_ENV=production node server/main.js",
     "dev": "cross-env NODE_ENV=development nodemon server/main.js",

@@ -23,8 +23,12 @@ app.use((req,_,next)=>{
 
 // Se agrega a la aplicación la ruta admin
 app.use('/admin', adminRoute);
-// Se agrega a la aplicación la ruta admin
+// Se agrega a la aplicación la ruta home
 app.use(homeRoute);
+// 404 error page
+app.use((req, res, next)=>{
+  res.status(404).send('<h1>🥺 Recurso no encontrado </h1>');
+});
 
 /**
  * Codigos de Emojies
