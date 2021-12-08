@@ -1,6 +1,7 @@
 // Importando express
 // $ npm i express -S
 import Express from 'express'
+import path from 'path'
 
 // Importar enrutadores
 import adminRoute from './routes/admin.route.js';
@@ -27,7 +28,8 @@ app.use('/admin', adminRoute);
 app.use(homeRoute);
 // 404 error page
 app.use((req, res, next)=>{
-  res.status(404).send('<h1>🥺 Recurso no encontrado </h1>');
+  const filePath = path.join(path.resolve(), "server", "views", "not-found.html");
+  res.sendFile(filePath);
 });
 
 /**
