@@ -3,6 +3,8 @@
 import Express from 'express'
 import path from 'path'
 
+import { ROOT_DIR } from './helpers/path.helper.js';
+
 // Importar enrutadores
 import adminRoute from './routes/admin.route.js';
 import homeRoute from './routes/home.route.js';
@@ -28,7 +30,7 @@ app.use('/admin', adminRoute);
 app.use(homeRoute);
 // 404 error page
 app.use((req, res, next)=>{
-  const filePath = path.join(path.resolve(), "server", "views", "not-found.html");
+  const filePath = path.join(ROOT_DIR, "server", "views", "not-found.html");
   res.sendFile(filePath);
 });
 
