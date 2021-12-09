@@ -3,7 +3,7 @@
 import Express from 'express'
 import path from 'path'
 
-import { ROOT_DIR } from './helpers/path.helper.js';
+import { ROOT_DIR } from './helpers/path.helper.js'
 
 // Importar enrutadores
 import adminRoute from './routes/admin.route.js';
