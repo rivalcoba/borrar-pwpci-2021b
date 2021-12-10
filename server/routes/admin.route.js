@@ -3,9 +3,12 @@ import { Router } from 'express';
 import path from 'path';
 import { ROOT_DIR } from '../helpers/path.helper.js';
 
+// Base de datos volatil
+export const products = [];
+
 
 // 2 Crear una instancia del enrutador
-const router = Router();
+export const router = Router();
 
 // 3 Registrar rutas a mi enrutador
 // Sirve el formulario para agregar productos
@@ -18,10 +21,12 @@ router.get('/add-product',(_, res)=>{
 // POST: /admin/add-product
 router.post('/add-product',(req, res)=>{
   // Desestructurando el body de la petición
-  const { body } = req;
-  // Respondiendo en JSON el body
-  res.json(body);
+  const { name } = req.body;
+  // Guarda en la base de datos el nombre del producto
+  products.push({name});
+  // Redirecciono a la pantalla principañ
+  res.redirect('/');
 });
 
 // Exportando el router de la subruta de admin
-export default router;
+// export default router;
