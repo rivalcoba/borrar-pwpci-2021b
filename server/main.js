@@ -3,6 +3,15 @@
 import Express from "express";
 import path from "path";
 
+// Importando el motor de plantillas
+import { engine } from "express-handlebars";
+
+// Creando la instancia del motor de plantillas
+const hbsTemplateEngine = engine({
+  extname: ".hbs",
+  defaultLayout: "main",
+});
+
 import { ROOT_DIR } from "./helpers/path.helper.js";
 
 // Importar enrutadores
@@ -13,6 +22,15 @@ console.log(`Variable de entorno: ${process.env.NODE_ENV}`);
 
 // Crear una instancia de Express
 const app = Express(); // (req, res, next)=>{} request handler
+
+// Registro el motor de plantillas
+app.engine("hbs", hbsTemplateEngine);
+
+// Seleccionar en la app el motor a utilizar
+app.set("view engine", "hbs");
+
+// Establecer las rutas de las vistas
+app.set("views", path.join(ROOT_DIR, "server", "views"));
 
 // 1. Insertando Middleware para la lectura de datos
 // desde un cliente
@@ -33,8 +51,9 @@ app.use("/admin", adminRoute);
 app.use(homeRoute);
 // 404 error page
 app.use((req, res, next) => {
-  const filePath = path.join(ROOT_DIR, "server", "views", "not-found.html");
-  res.sendFile(filePath);
+  // DRY --> Don't repeat yourself
+  console.log("💔 Recurso no encontrado: 'not-found.html'");
+  res.render("not-found");
 });
 
 /**

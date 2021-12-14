@@ -21,8 +21,8 @@ router.get("/about", (_, res) => {
 // La ruta raíz entra en todo tipo de petición
 router.get(["/", "/home"], (_, res) => {
   console.log(`📔 Inventario de productos: ${JSON.stringify(products)}`);
-  const filePath = path.join(ROOT_DIR, "server", "views", "shop.html");
-  res.sendFile(filePath);
+  console.log("📒 Sirviendo recurso: 'shop.html'");
+  res.render('shop');
 });
 
 export default router;
